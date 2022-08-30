@@ -1,0 +1,16 @@
+.key_event_label {
+    display: block;
+    border: 1px solid blue;
+    color: blue;
+    font-size: 2em;
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+}
+
+#sample_text {
+    color: black;
+    border: 1px solid black;
+    columns: 100;
+}
+
