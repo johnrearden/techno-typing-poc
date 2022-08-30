@@ -25,13 +25,16 @@ function init() {
         event.preventDefault();
         keyDownLabel.innerHTML = event.key;
         locationLabel.innerHTML = event.location;
-        highlightKey(event.key, event.location)
+        const data = keyMap[event.location][event.key]
+        drawKey(data, true);
     });
 
     document.addEventListener('keyup', (event) => {
         keyDownLabel.innerHTML = '';
         locationLabel.innerHTML = '';
         keyUpLabel.innerHTML = event.key
+        const data = keyMap[event.location][event.key]
+        drawKey(data, false);
         window.setTimeout(() => {
             keyUpLabel.innerHTML = "";
         }, 1000);
@@ -73,10 +76,6 @@ function drawKey(data, highlighted) {
     }
 }
 
-function drawHighlightedKey(data) {
-
-}
-
 function createKeyMap() {
     const keyMap = {};
     keyMap['0'] = {};
@@ -91,6 +90,5 @@ function createKeyMap() {
             let obj = keyMap[data.location]
             obj[data.key] = data;
     }
-    console.log(keyMap);
     return keyMap;
 }
