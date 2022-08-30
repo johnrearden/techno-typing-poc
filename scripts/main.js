@@ -16,11 +16,15 @@ function init() {
     textArea.value += sampleText;
     keyDownLabel = document.getElementById('key_down');
     keyUpLabel = document.getElementById('key_up');
+    locationLabel = document.getElementById('location');
     document.addEventListener('keydown', (event) => {
+        event.preventDefault();
         keyDownLabel.innerHTML = event.key;
+        locationLabel.innerHTML = event.location;
     });
     document.addEventListener('keyup', (event) => {
         keyDownLabel.innerHTML = '';
+        locationLabel.innerHTML = '';
         keyUpLabel.innerHTML = event.key
         window.setTimeout(() => {
             keyUpLabel.innerHTML = "";
