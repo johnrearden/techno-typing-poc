@@ -13,7 +13,7 @@ a[1] = 20;
 a[2] = 30'
 `
 
-let lastTime = new Date().getTime();
+let lastTime = 0;
 const MAX_INTERVAL = 1000;
 const FAST_COLOR = {
     red: 200,
@@ -37,13 +37,15 @@ function init() {
     document.addEventListener('keydown', (event) => {
         event.preventDefault();
         const currentTime = new Date().getTime();
-        const timeSinceLastKey = currentTime - lastTime;
+        const timeSinceLastKey = lastTime === 0 ? 0 : currentTime - lastTime;
         lastTime = currentTime;
         const timeLabel = document.getElementById('time_since_last');
         timeLabel.innerHTML = timeSinceLastKey;
         keyDownLabel.innerHTML = event.key;
         locationLabel.innerHTML = event.location;
-        const data = keyMap[event.location][event.key]
+        const keyIsLetter = event.key.match(/[a-z]/i) && event.key.length === 1;
+        let key =  keyIsLetter ? event.key.toLowerCase() : event.key;
+        const data = keyMap[event.location][key]
         data.averageList.push(timeSinceLastKey);
         calculateAverage(data);
         drawKey(data, true);
@@ -53,7 +55,9 @@ function init() {
         keyDownLabel.innerHTML = '';
         locationLabel.innerHTML = '';
         keyUpLabel.innerHTML = event.key
-        const data = keyMap[event.location][event.key]
+        const keyIsLetter = event.key.match(/[a-z]/i) && event.key.length === 1;
+        let key =  keyIsLetter ? event.key.toLowerCase() : event.key;
+        const data = keyMap[event.location][key]
         drawKey(data, false);
         window.setTimeout(() => {
             keyUpLabel.innerHTML = "";
