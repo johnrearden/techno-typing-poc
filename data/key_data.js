@@ -99,7 +99,7 @@ export const key_data = {
         path: []
     },
     "F9": {
-        xPos: 604,
+        xPos: 605,
         yPos: 9,
         xSize: 54,
         ySize: 54,
@@ -110,7 +110,7 @@ export const key_data = {
         path: []
     },
     "F10": {
-        xPos: 658,
+        xPos: 659,
         yPos: 9,
         xSize: 54,
         ySize: 54,
@@ -121,7 +121,7 @@ export const key_data = {
         path: []
     },
     "F11": {
-        xPos: 712,
+        xPos: 713,
         yPos: 9,
         xSize: 54,
         ySize: 54,
@@ -132,7 +132,7 @@ export const key_data = {
         path: []
     },
     "F12": {
-        xPos: 766,
+        xPos: 767,
         yPos: 9,
         xSize: 54,
         ySize: 54,
@@ -288,11 +288,11 @@ export const key_data = {
     "BACKSPACE": {
         xPos: 712,
         yPos: 90,
-        xSize: 108,
+        xSize: 109,
         ySize: 54,
         key: 'Backspace',
         location: 0,
-        mainLabel: '\u2408',
+        mainLabel: '\u2347',
         upperLabel: '',
         path: []
     },
@@ -303,7 +303,7 @@ export const key_data = {
         ySize: 54,
         key: 'Tab',
         location: 0,
-        mainLabel: 'TAB',
+        mainLabel: 'Tab',
         upperLabel: '',
         path: []
     },
@@ -457,7 +457,7 @@ export const key_data = {
         ySize: 54,
         key: 'CapsLock',
         location: 0,
-        mainLabel: 'CAPS',
+        mainLabel: 'Caps',
         upperLabel: '',
         path: []
     },
@@ -527,72 +527,634 @@ export const key_data = {
         upperLabel: '',
         path: []
     },
-    "A": {
-        xPos: 105,
+    "J": {
+        xPos: 429,
         yPos: 198,
         xSize: 54,
         ySize: 54,
-        key: 'a',
+        key: 'j',
         location: 0,
-        mainLabel: 'A',
+        mainLabel: 'J',
         upperLabel: '',
         path: []
     },
-    "A": {
-        xPos: 105,
+    "K": {
+        xPos: 483,
         yPos: 198,
         xSize: 54,
         ySize: 54,
-        key: 'a',
+        key: 'k',
         location: 0,
-        mainLabel: 'A',
+        mainLabel: 'K',
         upperLabel: '',
         path: []
     },
-    "A": {
-        xPos: 105,
+    "L": {
+        xPos: 537,
         yPos: 198,
         xSize: 54,
         ySize: 54,
-        key: 'a',
+        key: 'l',
         location: 0,
-        mainLabel: 'A',
+        mainLabel: 'L',
         upperLabel: '',
         path: []
     },
-    "A": {
-        xPos: 105,
+    ";": {
+        xPos: 591,
         yPos: 198,
         xSize: 54,
         ySize: 54,
-        key: 'a',
+        key: ';',
         location: 0,
-        mainLabel: 'A',
-        upperLabel: '',
+        mainLabel: ';',
+        upperLabel: ':',
         path: []
     },
-    "A": {
-        xPos: 105,
+    "'": {
+        xPos: 645,
         yPos: 198,
         xSize: 54,
         ySize: 54,
-        key: 'a',
+        key: "'",
         location: 0,
-        mainLabel: 'A',
-        upperLabel: '',
+        mainLabel: "'",
+        upperLabel: '@',
         path: []
     },
-    "A": {
-        xPos: 105,
+    "#": {
+        xPos: 699,
         yPos: 198,
         xSize: 54,
         ySize: 54,
-        key: 'a',
+        key: '#',
         location: 0,
-        mainLabel: 'A',
+        mainLabel: '#',
+        upperLabel: '~',
+        path: []
+    },
+    "LEFT_SHIFT": {
+        xPos: 10,
+        yPos: 252,
+        xSize: 68,
+        ySize: 54,
+        key: 'Shift',
+        location: 1,
+        mainLabel: 'Shift',
         upperLabel: '',
         path: []
     },
+    "FORWARD_SLASH": {
+        xPos: 78,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: '\\',
+        location: 0,
+        mainLabel: '\\',
+        upperLabel: '|',
+        path: []
+    },
+    "Z": {
+        xPos: 132,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: 'z',
+        location: 0,
+        mainLabel: 'Z',
+        upperLabel: '',
+        path: []
+    },
+    "X": {
+        xPos: 186,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: 'x',
+        location: 0,
+        mainLabel: 'X',
+        upperLabel: '',
+        path: []
+    },
+    "C": {
+        xPos: 240,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: 'c',
+        location: 0,
+        mainLabel: 'C',
+        upperLabel: '',
+        path: []
+    },
+    "V": {
+        xPos: 294,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: 'v',
+        location: 0,
+        mainLabel: 'V',
+        upperLabel: '',
+        path: []
+    },
+    "B": {
+        xPos: 348,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: 'b',
+        location: 0,
+        mainLabel: 'B',
+        upperLabel: '',
+        path: []
+    },
+    "N": {
+        xPos: 402,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: 'n',
+        location: 0,
+        mainLabel: 'N',
+        upperLabel: '',
+        path: []
+    },
+    "M": {
+        xPos: 456,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: 'm',
+        location: 0,
+        mainLabel: 'M',
+        upperLabel: '',
+        path: []
+    },
+    ",": {
+        xPos: 510,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: ',',
+        location: 0,
+        mainLabel: ',',
+        upperLabel: '<',
+        path: []
+    },
+    ".": {
+        xPos: 564,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: '.',
+        location: 0,
+        mainLabel: '.',
+        upperLabel: '>',
+        path: []
+    },
+    "/": {
+        xPos: 618,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: '/',
+        location: 0,
+        mainLabel: '/',
+        upperLabel: '?',
+        path: []
+    },
+    "RIGHT_SHIFT": {
+        xPos: 672,
+        yPos: 252,
+        xSize: 149,
+        ySize: 54,
+        key: 'Shift',
+        location: 2,
+        mainLabel: 'Shift',
+        upperLabel: '',
+        path: []
+    },
+    "LEFT_CTRL": {
+        xPos: 10,
+        yPos: 306,
+        xSize: 68,
+        ySize: 54,
+        key: 'Control',
+        location: 1,
+        mainLabel: 'Ctrl',
+        upperLabel: '',
+        path: []
+    },
+    "META": {
+        xPos: 78,
+        yPos: 306,
+        xSize: 67,
+        ySize: 54,
+        key: 'Meta',
+        location: 1,
+        mainLabel: 'Win',
+        upperLabel: '',
+        path: []
+    },
+    "ALT": {
+        xPos: 145,
+        yPos: 306,
+        xSize: 68,
+        ySize: 54,
+        key: 'Alt',
+        location: 1,
+        mainLabel: 'Alt',
+        upperLabel: '',
+        path: []
+    },
+    "SPACEBAR": {
+        xPos: 213,
+        yPos: 306,
+        xSize: 337,
+        ySize: 54,
+        key: ' ',
+        location: 0,
+        mainLabel: ' ',
+        upperLabel: '',
+        path: []
+    },
+    "ALTGR": {
+        xPos: 550,
+        yPos: 306,
+        xSize: 68,
+        ySize: 54,
+        key: 'AltGraph',
+        location: 2,
+        mainLabel: 'AltGr',
+        upperLabel: '',
+        path: []
+    },
+    "FN": {
+        xPos: 618,
+        yPos: 306,
+        xSize: 67,
+        ySize: 54,
+        key: 'Meta',
+        location: 2,
+        mainLabel: 'Win',
+        upperLabel: '',
+        path: []
+    },
+    "Menu": {
+        xPos: 685,
+        yPos: 306,
+        xSize: 68,
+        ySize: 54,
+        key: 'ContextMenu',
+        location: 0,
+        mainLabel: 'Menu',
+        upperLabel: '',
+        path: []
+    },
+    "CTRL": {
+        xPos: 753,
+        yPos: 306,
+        xSize: 68,
+        ySize: 54,
+        key: 'Control',
+        location: 2,
+        mainLabel: 'Ctrl',
+        upperLabel: '',
+        path: []
+    },
+    "PRINT_SCREEN": {
+        xPos: 834,
+        yPos: 9,
+        xSize: 54,
+        ySize: 54,
+        key: 'PrintScreen',
+        location: 0,
+        mainLabel: 'Scn',
+        upperLabel: 'Prt',
+        path: []
+    },
+    "SCROLL_LOCK": {
+        xPos: 888,
+        yPos: 9,
+        xSize: 54,
+        ySize: 54,
+        key: 'ScrollLock',
+        location: 0,
+        mainLabel: 'Lck',
+        upperLabel: 'Scr',
+        path: []
+    },
+    "PAUSE": {
+        xPos: 942,
+        yPos: 9,
+        xSize: 54,
+        ySize: 54,
+        key: 'Pause',
+        location: 0,
+        mainLabel: 'Pause',
+        upperLabel: '',
+        path: []
+    },
+    "INSERT": {
+        xPos: 834,
+        yPos: 90,
+        xSize: 54,
+        ySize: 54,
+        key: 'Insert',
+        location: 0,
+        mainLabel: 'Ins',
+        upperLabel: '',
+        path: []
+    },
+    "HOME": {
+        xPos: 888,
+        yPos: 90,
+        xSize: 54,
+        ySize: 54,
+        key: 'Home',
+        location: 0,
+        mainLabel: 'Hom',
+        upperLabel: '',
+        path: []
+    },
+    "PAGE_UP": {
+        xPos: 942,
+        yPos: 90,
+        xSize: 54,
+        ySize: 54,
+        key: 'PageUp',
+        location: 0,
+        mainLabel: 'PgUp',
+        upperLabel: '',
+        path: []
+    },
+    "DELETE": {
+        xPos: 834,
+        yPos: 144,
+        xSize: 54,
+        ySize: 54,
+        key: 'Delete',
+        location: 0,
+        mainLabel: 'Del',
+        upperLabel: '',
+        path: []
+    },
+    "END": {
+        xPos: 888,
+        yPos: 144,
+        xSize: 54,
+        ySize: 54,
+        key: 'End',
+        location: 0,
+        mainLabel: 'End',
+        upperLabel: '',
+        path: []
+    },
+    "PAGE_DOWN": {
+        xPos: 942,
+        yPos: 144,
+        xSize: 54,
+        ySize: 54,
+        key: 'PageDown',
+        location: 0,
+        mainLabel: 'PgDn',
+        upperLabel: '',
+        path: []
+    },
+    "UP_ARROW": {
+        xPos: 888,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: 'ArrowUp',
+        location: 0,
+        mainLabel: '\u2191',
+        upperLabel: '',
+        path: []
+    },
+    "LEFT_ARROW": {
+        xPos: 834,
+        yPos: 306,
+        xSize: 54,
+        ySize: 54,
+        key: 'ArrowLeft',
+        location: 0,
+        mainLabel: '\u2190',
+        upperLabel: '',
+        path: []
+    },
+    "DOWN_ARROW": {
+        xPos: 888,
+        yPos: 306,
+        xSize: 54,
+        ySize: 54,
+        key: 'ArrowDown',
+        location: 0,
+        mainLabel: '\u2193',
+        upperLabel: '',
+        path: []
+    },
+    "RIGHT_ARROW": {
+        xPos: 942,
+        yPos: 306,
+        xSize: 54,
+        ySize: 54,
+        key: 'ArrowRight',
+        location: 0,
+        mainLabel: '\u2192',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_LOCK": {
+        xPos: 1009,
+        yPos: 90,
+        xSize: 54,
+        ySize: 54,
+        key: 'NumLock',
+        location: 0,
+        mainLabel: 'Lock',
+        upperLabel: 'Num',
+        path: []
+    },
+    "NUM_/": {
+        xPos: 1063,
+        yPos: 90,
+        xSize: 54,
+        ySize: 54,
+        key: '/',
+        location: 3,
+        mainLabel: '/',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_*": {
+        xPos: 1117,
+        yPos: 90,
+        xSize: 54,
+        ySize: 54,
+        key: '*',
+        location: 3,
+        mainLabel: '*',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_-": {
+        xPos: 1171,
+        yPos: 90,
+        xSize: 54,
+        ySize: 54,
+        key: '-',
+        location: 3,
+        mainLabel: '-',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_7": {
+        xPos: 1009,
+        yPos: 144,
+        xSize: 54,
+        ySize: 54,
+        key: '7',
+        location: 3,
+        mainLabel: '7',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_8": {
+        xPos: 1063,
+        yPos: 144,
+        xSize: 54,
+        ySize: 54,
+        key: '8',
+        location: 3,
+        mainLabel: '8',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_9": {
+        xPos: 1117,
+        yPos: 144,
+        xSize: 54,
+        ySize: 54,
+        key: '9',
+        location: 3,
+        mainLabel: '9',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_+": {
+        xPos: 1171,
+        yPos: 144,
+        xSize: 54,
+        ySize: 108,
+        key: '+',
+        location: 0,
+        mainLabel: '+',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_4": {
+        xPos: 1009,
+        yPos: 198,
+        xSize: 54,
+        ySize: 54,
+        key: '4',
+        location: 3,
+        mainLabel: '4',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_5": {
+        xPos: 1063,
+        yPos: 198,
+        xSize: 54,
+        ySize: 54,
+        key: '5',
+        location: 3,
+        mainLabel: '5',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_6": {
+        xPos: 1117,
+        yPos: 198,
+        xSize: 54,
+        ySize: 54,
+        key: '6',
+        location: 3,
+        mainLabel: '6',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_1": {
+        xPos: 1009,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: '1',
+        location: 3,
+        mainLabel: '1',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_2": {
+        xPos: 1063,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: '2',
+        location: 3,
+        mainLabel: '2',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_3": {
+        xPos: 1117,
+        yPos: 252,
+        xSize: 54,
+        ySize: 54,
+        key: '3',
+        location: 3,
+        mainLabel: '3',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_ENTER": {
+        xPos: 1171,
+        yPos: 252,
+        xSize: 54,
+        ySize: 108,
+        key: 'Enter',
+        location: 3,
+        mainLabel: '\u21B2',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_0": {
+        xPos: 1009,
+        yPos: 306,
+        xSize: 108,
+        ySize: 54,
+        key: '0',
+        location: 3,
+        mainLabel: '0',
+        upperLabel: '',
+        path: []
+    },
+    "NUM_.": {
+        xPos: 1117,
+        yPos: 306,
+        xSize: 54,
+        ySize: 54,
+        key: '.',
+        location: 3,
+        mainLabel: '.',
+        upperLabel: '',
+        path: []
+    },
+
     
 
     

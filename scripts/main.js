@@ -13,6 +13,19 @@ a[1] = 20;
 a[2] = 30'
 `
 
+let lastTime = new Date().getTime();
+const MAX_INTERVAL = 1000;
+const FAST_COLOR = {
+    red: 200,
+    green: 200,
+    blue: 200
+}
+const SLOW_COLOR = {
+    red: 98,
+    green: 62,
+    blue: 57
+}
+
 function init() {
     const keyMap = createKeyMap();
     const textArea = document.getElementById('sample_text');
@@ -23,9 +36,16 @@ function init() {
 
     document.addEventListener('keydown', (event) => {
         event.preventDefault();
+        const currentTime = new Date().getTime();
+        const timeSinceLastKey = currentTime - lastTime;
+        lastTime = currentTime;
+        const timeLabel = document.getElementById('time_since_last');
+        timeLabel.innerHTML = timeSinceLastKey;
         keyDownLabel.innerHTML = event.key;
         locationLabel.innerHTML = event.location;
         const data = keyMap[event.location][event.key]
+        data.averageList.push(timeSinceLastKey);
+        calculateAverage(data);
         drawKey(data, true);
     });
 
@@ -50,19 +70,34 @@ function init() {
     }
 }
 
+function calculateAverage(data) {
+    let total = 0;
+    for (let item of data.averageList) {
+        total += item < MAX_INTERVAL ? item : MAX_INTERVAL;
+    }
+    let average = total / data.averageList.length;
+    data.average = average;
+}
+
 function drawKey(data, highlighted) {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     ctx.strokeStyle = '#000';
-    ctx.fillStyle = highlighted ? '#ffa' : '#aaa';
+    if (highlighted) {
+        ctx.fillStyle = '#3438a8';
+    } else {
+        const colorRatio = data.average / MAX_INTERVAL;
+        const redRange = SLOW_COLOR.red - FAST_COLOR.red;
+        const red = FAST_COLOR.red + redRange * colorRatio;
+        const greenRange = SLOW_COLOR.green - FAST_COLOR.green;
+        const green = FAST_COLOR.green + greenRange * colorRatio;
+        const blueRange = SLOW_COLOR.blue - FAST_COLOR.blue;
+        const blue = FAST_COLOR.blue + blueRange * colorRatio;
+        ctx.fillStyle = `rgb(${red},${green},${blue})`;
+    }
     ctx.font = '20px Georgia';
         ctx.lineWidth = 1;
-    if (data.key !== 'Enter') {
-        ctx.fillRect(data.xPos, data.yPos, data.xSize, data.ySize);
-        ctx.strokeRect(data.xPos, data.yPos, data.xSize, data.ySize);
-        ctx.fillStyle = '#000';
-        ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 20);
-    } else {
+    if (data.key === 'Enter' && data.location === 0) {
         ctx.beginPath();
         ctx.moveTo(data.path[0][0], data.path[0][1])
         for (let point of data.path){
@@ -73,6 +108,17 @@ function drawKey(data, highlighted) {
         ctx.stroke();
         ctx.fillStyle = '#000';
         ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 20);
+    } else {
+        ctx.fillRect(data.xPos, data.yPos, data.xSize, data.ySize);
+        ctx.strokeRect(data.xPos, data.yPos, data.xSize, data.ySize);
+        ctx.fillStyle = '#000';
+        if (data.upperLabel === '') {
+            ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 30);
+        } else {
+            ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 45);
+            //ctx.font = '14px Georgia';
+            ctx.fillText(data.upperLabel, data.xPos + 5, data.yPos + 20);
+        }
     }
 }
 
@@ -89,6 +135,11 @@ function createKeyMap() {
         let data = key_data[item];
             let obj = keyMap[data.location]
             obj[data.key] = data;
+            if (data.upperLabel != ''){
+                obj[data.upperLabel] = data
+            }
+            data['averageList'] = []
+            data['average'] = 0
     }
     return keyMap;
 }
