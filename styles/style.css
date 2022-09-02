@@ -1,3 +1,10 @@
+body {
+    font-family: 'Kanit', sans-serif;
+    background-color: black;
+    color: #cfff04;
+    overflow: hidden;
+}
+
 .key_event_label {
     display: block;
     border: 1px solid blue;
@@ -8,13 +15,15 @@
     height: 30px;
 }
 
-#sample_text {
-    color: black;
-    border: 1px solid black;
-    columns: 100;
-}
+
 
 canvas {
     background-color: black;
+}
+
+textarea {
+    color: #cfff04;
+    background-color: black;
+    
 }
 

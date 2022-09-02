@@ -1,32 +1,57 @@
+<!DOCTYPE html>
 <html>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/style.css">
-        <title>Techno Typing</title>
-    </head>
-    <body>
-        <header>
-            <h1>Welcome to Techno Typing</h1>
-        </header>
-        <section>
-            <div>
-                <textarea id="sample_text" rows="10" cols="100"></textarea>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Techno Typing</title>
+</head>
+
+<body>
+    <div class="containerasdf">
+        <div class="row">
+            <div class="col-12">
+                <section class="jumbotron text-center text-bg-primary p-3">
+                    <h1 class="jumbotron-header">Welcome to Techno Typing</h1>
+                    <p class="lead">
+                        You've decided to change careers, to head West into the wide open spaces of the tech industry.
+                        There's a snag, though. Why do they have to use all these strange symbols in code? Where are
+                        they
+                        on the keyboard? I can touch type fine, but I can't touch type this crap!
+                    </p>
+                </section>
             </div>
-            <div>
-                <canvas id="canvas" width="1236" height="369"></canvas>
-            </div>
-            <div>
-                <label id="key_down" class ="key_event_label">Blank</label>
-                <label id="key_up" class ="key_event_label">Blank</label>
-                <label id="location" class="key_event_label">Blank</label>
-                <label id="time_since_last" class="key_event_label">Blank</label>
-            </div>
-        </section>
-        <script type="module" src="scripts/main.js"></script>
-    </body>
-    </html>
+        </div>
+    </div>
+
+    <section>
+        <div class="text-center">
+            <textarea id="sample_text" rows="10" cols="100"></textarea>
+        </div>
+        <div class="text-center">
+            <canvas id="canvas" width="1236" height="369"></canvas>
+        </div>
+        <div>
+            <label id="key_down" class="key_event_label">Blank</label>
+            <label id="key_up" class="key_event_label">Blank</label>
+            <label id="location" class="key_event_label">Blank</label>
+            <label id="time_since_last" class="key_event_label">Blank</label>
+        </div>
+    </section>
+    <script type="module" src="scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
 </html>

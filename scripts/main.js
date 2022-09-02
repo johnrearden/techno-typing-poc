@@ -14,7 +14,7 @@ a[2] = 30'
 `
 
 let lastTime = 0;
-const MAX_INTERVAL = 1000;
+const MAX_INTERVAL = 500;
 const FAST_COLOR = {
     red: 200,
     green: 200,
@@ -35,7 +35,7 @@ function init() {
     const locationLabel = document.getElementById('location');
 
     document.addEventListener('keydown', (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         const currentTime = new Date().getTime();
         const timeSinceLastKey = lastTime === 0 ? 0 : currentTime - lastTime;
         lastTime = currentTime;
@@ -66,7 +66,7 @@ function init() {
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#cccccc';
+    ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     for (let item in key_data){
         let data = key_data[item];
@@ -86,9 +86,9 @@ function calculateAverage(data) {
 function drawKey(data, highlighted) {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    ctx.strokeStyle = '#000';
+    ctx.strokeStyle = '#cfff04';
     if (highlighted) {
-        ctx.fillStyle = '#3438a8';
+        ctx.fillStyle = '#cfff04';
     } else {
         const colorRatio = data.average / MAX_INTERVAL;
         const redRange = SLOW_COLOR.red - FAST_COLOR.red;
@@ -99,7 +99,7 @@ function drawKey(data, highlighted) {
         const blue = FAST_COLOR.blue + blueRange * colorRatio;
         ctx.fillStyle = `rgb(${red},${green},${blue})`;
     }
-    ctx.font = '20px Georgia';
+    ctx.font = '20px sans-serifg';
         ctx.lineWidth = 1;
     if (data.key === 'Enter' && data.location === 0) {
         ctx.beginPath();
@@ -110,12 +110,12 @@ function drawKey(data, highlighted) {
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
-        ctx.fillStyle = '#000';
+        ctx.fillStyle = '#cfff04';
         ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 20);
     } else {
         ctx.fillRect(data.xPos, data.yPos, data.xSize, data.ySize);
         ctx.strokeRect(data.xPos, data.yPos, data.xSize, data.ySize);
-        ctx.fillStyle = '#000';
+        ctx.fillStyle = '#cfff04';
         if (data.upperLabel === '') {
             ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 30);
         } else {
