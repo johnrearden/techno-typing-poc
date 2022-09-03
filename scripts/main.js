@@ -1,4 +1,4 @@
-import {key_data} from '../data/key_data.js';
+import { key_data } from '../data/key_data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     init();
@@ -44,7 +44,7 @@ function init() {
         keyDownLabel.innerHTML = event.key;
         locationLabel.innerHTML = event.location;
         const keyIsLetter = event.key.match(/[a-z]/i) && event.key.length === 1;
-        let key =  keyIsLetter ? event.key.toLowerCase() : event.key;
+        let key = keyIsLetter ? event.key.toLowerCase() : event.key;
         const data = keyMap[event.location][key]
         data.averageList.push(timeSinceLastKey);
         calculateAverage(data);
@@ -56,7 +56,7 @@ function init() {
         locationLabel.innerHTML = '';
         keyUpLabel.innerHTML = event.key
         const keyIsLetter = event.key.match(/[a-z]/i) && event.key.length === 1;
-        let key =  keyIsLetter ? event.key.toLowerCase() : event.key;
+        let key = keyIsLetter ? event.key.toLowerCase() : event.key;
         const data = keyMap[event.location][key]
         drawKey(data, false);
         window.setTimeout(() => {
@@ -66,9 +66,9 @@ function init() {
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#000';
+    ctx.fillStyle = '#444444';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    for (let item in key_data){
+    for (let item in key_data) {
         let data = key_data[item];
         drawKey(data, false);
     }
@@ -84,27 +84,32 @@ function calculateAverage(data) {
 }
 
 function drawKey(data, highlighted) {
+    let single_char_label = true;
+    if (data.mainLabel.length > 1) {
+        single_char_label = false;
+    }
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     ctx.strokeStyle = '#cfff04';
     if (highlighted) {
         ctx.fillStyle = '#cfff04';
     } else {
-        const colorRatio = data.average / MAX_INTERVAL;
-        const redRange = SLOW_COLOR.red - FAST_COLOR.red;
-        const red = FAST_COLOR.red + redRange * colorRatio;
-        const greenRange = SLOW_COLOR.green - FAST_COLOR.green;
-        const green = FAST_COLOR.green + greenRange * colorRatio;
-        const blueRange = SLOW_COLOR.blue - FAST_COLOR.blue;
-        const blue = FAST_COLOR.blue + blueRange * colorRatio;
-        ctx.fillStyle = `rgb(${red},${green},${blue})`;
+        ctx.fillStyle = '#666666'
+        // const colorRatio = data.average / MAX_INTERVAL;
+        // const redRange = SLOW_COLOR.red - FAST_COLOR.red;
+        // const red = FAST_COLOR.red + redRange * colorRatio;
+        // const greenRange = SLOW_COLOR.green - FAST_COLOR.green;
+        // const green = FAST_COLOR.green + greenRange * colorRatio;
+        // const blueRange = SLOW_COLOR.blue - FAST_COLOR.blue;
+        // const blue = FAST_COLOR.blue + blueRange * colorRatio;
+        // ctx.fillStyle = `rgb(${red},${green},${blue})`;
     }
-    ctx.font = '20px sans-serifg';
-        ctx.lineWidth = 1;
+    ctx.font = single_char_label ? '20px Kanit' : '14px Kanit';
+    ctx.lineWidth = 1;
     if (data.key === 'Enter' && data.location === 0) {
         ctx.beginPath();
         ctx.moveTo(data.path[0][0], data.path[0][1])
-        for (let point of data.path){
+        for (let point of data.path) {
             ctx.lineTo(point[0], point[1]);
         }
         ctx.closePath();
@@ -137,13 +142,13 @@ function createKeyMap() {
 
     for (let item in key_data) {
         let data = key_data[item];
-            let obj = keyMap[data.location]
-            obj[data.key] = data;
-            if (data.upperLabel != ''){
-                obj[data.upperLabel] = data
-            }
-            data['averageList'] = []
-            data['average'] = 0
+        let obj = keyMap[data.location]
+        obj[data.key] = data;
+        if (data.upperLabel != '') {
+            obj[data.upperLabel] = data
+        }
+        data['averageList'] = []
+        data['average'] = 0
     }
     return keyMap;
 }
