@@ -26,6 +26,17 @@ const SLOW_COLOR = {
     blue: 57
 }
 
+const fgMainColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--fg-main');
+const fgLightColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--fg-light');
+const bgDeepColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--bg-deep');
+const bgMediumColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--bg-medium');
+const bgLightColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--bg-light');
+
 function init() {
     const keyMap = createKeyMap();
     const textArea = document.getElementById('sample_text');
@@ -66,7 +77,7 @@ function init() {
 
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#444444';
+    ctx.fillStyle = bgDeepColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     for (let item in key_data) {
         let data = key_data[item];
@@ -90,22 +101,30 @@ function drawKey(data, highlighted) {
     }
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    ctx.strokeStyle = '#cfff04';
-    if (highlighted) {
-        ctx.fillStyle = '#cfff04';
-    } else {
-        ctx.fillStyle = '#666666'
-        // const colorRatio = data.average / MAX_INTERVAL;
-        // const redRange = SLOW_COLOR.red - FAST_COLOR.red;
-        // const red = FAST_COLOR.red + redRange * colorRatio;
-        // const greenRange = SLOW_COLOR.green - FAST_COLOR.green;
-        // const green = FAST_COLOR.green + greenRange * colorRatio;
-        // const blueRange = SLOW_COLOR.blue - FAST_COLOR.blue;
-        // const blue = FAST_COLOR.blue + blueRange * colorRatio;
-        // ctx.fillStyle = `rgb(${red},${green},${blue})`;
-    }
+    ctx.strokeStyle = fgMainColor;
     ctx.font = single_char_label ? '20px Kanit' : '14px Kanit';
     ctx.lineWidth = 1;
+
+    // Draw side of key
+    if (data.key === 'Enter' && data.location === 0) {
+        ctx.beginPath();
+        ctx.moveTo(data.path[0][0], data.path[0][1])
+        for (let point of data.path) {
+            ctx.lineTo(point[0], point[1]);
+        }
+        ctx.closePath();
+        ctx.fillStyle = highlighted ? fgMainColor : bgLightColor;
+        ctx.fill();
+        ctx.strokeStyle = bgMediumColor;
+        ctx.stroke();
+    } else {
+        ctx.fillStyle = highlighted ? fgMainColor : bgLightColor;
+        ctx.fillRect(data.xPos, data.yPos, data.xSize, data.ySize);
+        ctx.strokeStyle = bgMediumColor;
+        ctx.strokeRect(data.xPos, data.yPos, data.xSize, data.ySize);
+    }
+
+    // Draw face of key
     if (data.key === 'Enter' && data.location === 0) {
         ctx.beginPath();
         ctx.moveTo(data.path[0][0], data.path[0][1])
@@ -115,19 +134,31 @@ function drawKey(data, highlighted) {
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
-        ctx.fillStyle = '#cfff04';
-        ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 20);
     } else {
-        ctx.fillRect(data.xPos, data.yPos, data.xSize, data.ySize);
-        ctx.strokeRect(data.xPos, data.yPos, data.xSize, data.ySize);
-        ctx.fillStyle = '#cfff04';
-        if (data.upperLabel === '') {
-            ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 30);
-        } else {
-            ctx.fillText(data.mainLabel, data.xPos + 5, data.yPos + 45);
-            //ctx.font = '14px Georgia';
-            ctx.fillText(data.upperLabel, data.xPos + 5, data.yPos + 20);
-        }
+        let x = data.xPos + 3;
+        let y = data.yPos + 3;
+        let w = data.xSize - 6;
+        let h = data.ySize - 6;
+        let r = 5;
+        ctx.beginPath();
+        ctx.moveTo(x+r, y);
+        ctx.arcTo(x+w, y, x+w, y+h, r);
+        ctx.arcTo(x+w, y+h, x, y+h, r);
+        ctx.arcTo(x, y+h, x, y, r);
+        ctx.arcTo(x, y, x+w, y, r);
+        ctx.closePath();
+        ctx.fillStyle = bgMediumColor;
+        ctx.fill();
+        ctx.fillStyle = fgMainColor;
+    }
+
+    // Draw text on key
+    ctx.fillStyle = highlighted ? fgMainColor : fgLightColor;
+    if (data.upperLabel === '') {
+        ctx.fillText(data.mainLabel, data.xPos + 10, data.yPos + 30);
+    } else {
+        ctx.fillText(data.mainLabel, data.xPos + 10, data.yPos + 42);
+        ctx.fillText(data.upperLabel, data.xPos + 10, data.yPos + 22);
     }
 }
 
