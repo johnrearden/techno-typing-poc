@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Yo!</h1>
+    <canvas id="c" width="600" height="300"></canvas>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/",
+            "three/examples/jsm/loaders/FontLoader": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/loaders/FontLoader.js",
+            "three/examples/jsm/geometries/TextGeometry": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/geometries/TextGeometry.js"
+          }
+        }
+      </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
+        import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+
+        let textGeometry;
+
+        function loadFont(url) {
+            return new Promise((resolve, reject) => {
+                const fontLoader = new FontLoader();
+                fontLoader.load(
+                    url,
+                    font => resolve(font),
+                    undefined, // onProgress (optional)
+                    error => reject(error)
+                );
+            })
+        }
+
+        const font = await loadFont('assets/fonts/Jaro_Regular.json');
+        textGeometry = new TextGeometry('Johnny', {
+            font: font,
+            size: 1, // Size of the text
+            height: 0.15, // Depth of the text
+            curveSegments: 50, // Number of segments for curves
+            bevelEnabled: true, // Optional bevel
+            bevelThickness: 0.01,
+            bevelSize: 0.02,
+            bevelSegments: 5,
+        });
+        textGeometry.center();
+
+
+        function main() {
+            const canvas = document.querySelector('#c');
+            const renderer = new THREE.WebGLRenderer({antialias: true, canvas});
+            const fov = 75;
+            const aspect = 2;  // the canvas default
+            const near = 0.1;
+            const far = 5;
+            const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.z = 3;
+
+            const scene = new THREE.Scene();
+            const boxWidth = 1;
+            const boxHeight = 1;
+            const boxDepth = 1;
+            const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+
+            const textureLoader = new THREE.TextureLoader();
+            const texture = textureLoader.load('assets/images/tile.png')
+            const material = new THREE.MeshBasicMaterial({ map: texture });
+            
+            const phongMaterial = new THREE.MeshPhongMaterial({color: 0x44aa88});
+            const cube = new THREE.Mesh(geometry, material);
+
+            const textMesh = new THREE.Mesh(textGeometry, phongMaterial);
+            scene.add(textMesh);
+
+            //scene.add(cube);
+
+            const color = 0xFFFFFF;
+            const intensity = 5;
+            const light = new THREE.DirectionalLight(color, intensity);
+            light.position.set(-1, 2, 4);
+            scene.add(light);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Soft white light
+            scene.add(ambientLight);
+
+            renderer.render(scene, camera);
+
+            console.log(textGeometry.attributes.position);
+
+            function render(time) {
+                time *= 0.01; // Convert time to seconds
+
+                // Access vertex positions
+                const positions = textGeometry.attributes.position;
+                const vertexCount = positions.count;
+
+                // Iterate over each vertex and modify its position
+                for (let i = 0; i < vertexCount; i++) {
+                    // Get the original position of the vertex
+                    const x = positions.getX(i);
+                    const y = positions.getY(i);
+                    const z = positions.getZ(i);
+
+                    // Calculate the distance from the origin
+                    const distance = Math.sqrt(x * x + y * y + z * z);
+
+                    // Use a sine wave to modulate the displacement
+                    const offset = Math.sin(time) * 0.01; // Adjust amplitude (0.1) as needed
+
+                    // Move the vertex outward or inward
+                    const scale = 1 + 1 / distance * offset;
+                    positions.setXYZ(i, x * scale, y * scale, z * scale);
+                }
+
+                // Flag the geometry for update
+                positions.needsUpdate = true;
+
+                textMesh.rotation.y = time * 0.03;
+
+                // Render the scene
+                renderer.render(scene, camera);
+
+                console.log('done');
+                
+                requestAnimationFrame(render);
+            }
+            requestAnimationFrame(render);
+        }
+            
+
+        main();
+        
+            
+
+    </script>
+</body>
+</html>
